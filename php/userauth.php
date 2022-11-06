@@ -2,7 +2,7 @@
 
 require_once "../config.php";
 if(isset($_POST['submit'])){
-    $fullnames = $_POST['full_names'];
+    $fullnames = $_POST['full_names']; // front-end return Full_names (not full_names)
     $email = $_POST['email'];
     $password = $_POST['password'];
     $gender = $_POST['gender'];
