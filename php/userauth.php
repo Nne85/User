@@ -59,7 +59,7 @@ if (mysqli_num_rows($sql) > 0){
     //if true then set user session for the user and redirect to the dasbboard
 }
 
-function logoutUser(){
+/*function logoutUser(){
     if ($_SESSION['username']){
     session_unset();
     session_destroy();
@@ -69,6 +69,15 @@ else{
     header("Location: ../forms/login.php");
 }
 
+}*/
+function logoutUser(){
+    if (isset($_POST['logout'])){
+        session_unset();
+        session_destroy();
+        header("Location: ../index.php");  
+    }else{
+        header("Location: ../forms/login.php");
+    }
 }
 
 function resetPassword($email, $password){
@@ -131,10 +140,12 @@ function getusers(){
  function deleteaccount($id){
      $conn = db();
      //delete user with the given id from the database
- if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM Students WHERE id ='$id'"))){
-    $sql = "DELETE FROM Students WHERE id= '$id";
+ if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM Students WHERE id ='$id'")))
+ {
+    $sql = "DELETE FROM Students WHERE id= '$id'";
     if (mysqli_query($conn, $sql)){
         echo "<script>alert('Deleted')</script>";
+        header("refresh: 0.1; url =../dashboard.php");
     }
  }
  

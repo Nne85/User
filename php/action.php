@@ -6,16 +6,14 @@ include_once "../config.php";
 switch(true){
     case isset($_POST['register']):
         //extract the $_POST array values for name, password and email
-            $fullnames = $_POST['Full_names'];
+            $fullnames = $_POST['full_names'];
             $email = $_POST['email'];//
             $password = $_POST['password']; //
-            $country = $_POST['Country']; //
+            $country = $_POST['country']; //
             $gender = $_POST['gender'];//   
         registerUser($fullnames, $email, $password, $gender, $country);
         break;
-case isset($_POST['logout']);
-logoutUser();
-break;
+    
 
     case isset($_POST['login']):
             $email = $_POST['email'];//
@@ -26,6 +24,10 @@ break;
             $email = $_POST['email'];//
             $password = $_POST['password'];//
         resetPassword($email, $password);
+        break;
+        
+        case isset($_POST['logout']);
+          logoutUser();
         break;
     case isset($_POST["delete"]):
         $id = $_POST['id'];
